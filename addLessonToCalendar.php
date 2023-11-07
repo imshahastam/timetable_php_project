@@ -6,42 +6,63 @@ require_once("functions.php");
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Расписание</title>
+    <title>Записать в расписание</title>
 </head>
 <body>
-    <h1>Запись в расписание</h1>
-    <form id="formForFaculty" method="GET">
-        <label for="faculty_label">Факультет:</label>
+    <h1>Запишите в расписание</h1>
+    <form action="" method="post">
+        <label for="faculty">Выберите факультет:</label>
         <select id="faculty" name="faculty">
             <?php
             $faculty_result = get_faculties($conn);
 
             if ($faculty_result->num_rows > 0) {
                 while ($faculty_row = $faculty_result->fetch_assoc()) {
-                     $selected_faculty = '<option value="' . $faculty_row["name"] . '">' . $faculty_row["name"] . '</option>';
-                     echo $selected_faculty;
+                    echo '<option value="' . $faculty_row["name"] . '">' . $faculty_row["name"] . '</option>';
                 }
             }
             ?>
         </select><br><br>
+        <input type="submit" value="Выбрать факультет">
     </form>
 
-    <form id="formForSubject" action="" method="POST">
-        <label for="name">Предмет:</label>
-        <select id="name" name="name">
-            <?php
-            // Здесь предметы будут выбраны на основе выбранного факультета
-            
-                $subject_result = get_lessons_by_faculty($conn, $selected_faculty);
+    <?php
+    session_start();
 
-                if ($subject_result->num_rows > 0) {
-                    while ($subject_row = $subject_result->fetch_assoc()) {
-                        echo '<option value="' . $subject_row["name"] . '">' . $subject_row["name"] . '</option>';
+    // Проверка, была ли отправлена форма
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["faculty"])) {
+        // Получение выбранного факультета
+        $selectedFaculty = $_POST["faculty"];
+
+        // Запись текста и времени его появления в сессию
+        $_SESSION["selectedFacultyText"] = "Выбранный факультет: $selectedFaculty";
+        $_SESSION["selectedFacultyTime"] = time(); // Записываем текущее время
+    }
+
+    // Проверка, есть ли текст в сессии и прошло ли более двух минут
+    if (isset($_SESSION["selectedFacultyText"]) && isset($_SESSION["selectedFacultyTime"]) && (time() - $_SESSION["selectedFacultyTime"] < 5)) {
+        echo "<span style='color: green;'>" . $_SESSION["selectedFacultyText"] . "</span>";
+    }
+    ?>
+
+
+    <form action="" method="post">
+        <label for='subject'>Выберите предмет:</label>
+            <select name='subject' id='subject'>
+                <?php
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["faculty"])) {
+                    // Получение выбранного факультета
+                    $selectedFaculty = $_POST["faculty"];
+
+                    $result = get_lessons_by_faculty($conn, $selectedFaculty);
+
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
                     }
+                    // Закрытие соединения с базой данных
+                    $conn->close();
                 }
-            
-            ?>
+                ?>
         </select><br><br>
 
         <label for="teacher">Преподаватель:</label>
@@ -74,8 +95,8 @@ require_once("functions.php");
             }
             ?>
         </select><br><br>
-
-        <input type="submit" value="Записать в расписание">
+        <input type='submit' value='Записать в расписание'>
     </form>
 </body>
 </html>
+

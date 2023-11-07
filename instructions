@@ -8,7 +8,8 @@
     mysqldump -uroot -p 'название вашей базы' > C:\OSPanel\domains\localhost\timetable_project\sql_dumps\dumpMysql.sql
 
     'название вашей базы' - без кавычек пишите. у меня, например, timetable_shaha,
-    C:\OSPanel\domains\localhost\timetable_project\sql_dumps\dumpMysql.sql - это путь к папке, где хранятся дампы. у вас может быть свой путь. dumpMysql.sql - это название моего дампа (у вас может быть свой)
+    C:\OSPanel\domains\localhost\timetable_project\sql_dumps\dumpMysql.sql - это путь к папке, где хранятся дампы. 
+    у вас может быть свой путь. dumpMysql.sql - это название моего дампа (у вас может быть свой)
 
 5. Дальше у вас попросить ввести ваш пароль, которым вы заходите в базу SQL. Вводите и все.
 
