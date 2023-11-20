@@ -17,6 +17,7 @@ require_once("functions.php");
             $faculty_result = get_faculties($conn);
 
             if ($faculty_result->num_rows > 0) {
+                echo '<option value="" disabled selected>-Выберите факультет-</option>';
                 while ($faculty_row = $faculty_result->fetch_assoc()) {
                     echo '<option value="' . $faculty_row["name"] . '">' . $faculty_row["name"] . '</option>';
                 }
@@ -57,7 +58,10 @@ require_once("functions.php");
                     $result = get_lessons_by_faculty($conn, $selectedFaculty);
 
                     while ($row = $result->fetch_assoc()) {
-                        echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                        //echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                ?>      <option value="<?php echo $row['lesson_id'];?>">
+                        <?php echo $row['name']; ?>
+                    </option> <?php
                     }
                     // Закрытие соединения с базой данных
                     $conn->close();
@@ -97,6 +101,14 @@ require_once("functions.php");
         </select><br><br>
         <input type='submit' value="Записать в расписание">
     </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $()
+        }) 
+    </script>
 </body>
 </html>
 

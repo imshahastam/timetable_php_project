@@ -8,7 +8,7 @@ function get_faculties($conn) {
 }
 
 function get_lessons_by_faculty($conn, $faculty_name) {
-    $lessons_sql = "SELECT l.name FROM lessons l INNER JOIN faculties f ON
+    $lessons_sql = "SELECT l.name, l.lesson_id FROM lessons l INNER JOIN faculties f ON
     (l.faculty_id = f.faculty_id) WHERE f.name = '$faculty_name'";
     $result = $conn->query($lessons_sql);
 
