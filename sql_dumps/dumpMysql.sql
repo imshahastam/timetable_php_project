@@ -79,7 +79,8 @@ CREATE TABLE `lessons` (
   `theory` int NOT NULL,
   `practice` int NOT NULL,
   `show_in_calendar` int DEFAULT NULL,
-  `times` time DEFAULT NULL,
+  `teacher` text,
+  `times` text,
   `days` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `class_id` int DEFAULT NULL,
   `faculty_id` int NOT NULL,
@@ -97,7 +98,7 @@ CREATE TABLE `lessons` (
 
 LOCK TABLES `lessons` WRITE;
 /*!40000 ALTER TABLE `lessons` DISABLE KEYS */;
-INSERT INTO `lessons` VALUES (1,'Комплекс','203-уме','Осень','йцу',4,2,2,NULL,NULL,NULL,NULL,1),(2,'Базы данных','301-уме','Осень','йцу',3,1,2,NULL,NULL,NULL,NULL,1),(3,'Графы','102-мат','Осень','йцу',4,2,2,NULL,NULL,NULL,NULL,2),(4,'Анализ','403-уме','Осень','ова',5,2,1,NULL,NULL,NULL,NULL,1),(5,'Програмлама','204-уме','Осень','йцу',4,2,2,NULL,NULL,NULL,NULL,1);
+INSERT INTO `lessons` VALUES (1,'Комплекс','203-уме','Осень','йцу',4,2,2,NULL,'Элла эже','08:00','ПН',NULL,1),(2,'Базы данных','301-уме','Осень','йцу',3,1,2,NULL,'Элла эже','08:55','ВТ',NULL,1),(3,'Графы','102-мат','Осень','йцу',4,2,2,NULL,'Тратат','08:00','ПН',NULL,2),(4,'Анализ','403-уме','Осень','ова',5,2,1,NULL,NULL,NULL,NULL,NULL,1),(5,'Програмлама','204-уме','Осень','йцу',4,2,2,NULL,'Тратат','11:40','ПН',NULL,1);
 /*!40000 ALTER TABLE `lessons` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,4 +136,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-07 23:03:09
+-- Dump completed on 2023-11-20 22:58:22
