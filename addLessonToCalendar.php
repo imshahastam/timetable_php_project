@@ -46,7 +46,7 @@ require_once("functions.php");
     ?>
 
 
-    <form action="" method="post">
+    <form action="add_to_calendar.php" method="POST">
         <label for='subject'>Выберите предмет:</label>
             <select name='subject' id='subject'>
                 <?php
@@ -95,7 +95,7 @@ require_once("functions.php");
             }
             ?>
         </select><br><br>
-        <input type='submit' value='Записать в расписание'>
+        <input type='submit' value="Записать в расписание">
     </form>
 </body>
 </html>
