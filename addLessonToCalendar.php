@@ -58,10 +58,10 @@ require_once("functions.php");
                     $result = get_lessons_by_faculty($conn, $selectedFaculty);
 
                     while ($row = $result->fetch_assoc()) {
-                        //echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
-                ?>      <option value="<?php echo $row['lesson_id'];?>">
-                        <?php echo $row['name']; ?>
-                    </option> <?php
+                ?>      
+                <option value="<?php echo $row['lesson_id'];?>">
+                <?php echo $row['name']; ?>
+                </option> <?php
                     }
                     // Закрытие соединения с базой данных
                     $conn->close();
