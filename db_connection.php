@@ -2,7 +2,7 @@
 $servername = "localhost"; // Хост базы данных
 $username = "root"; // Имя пользователя
 $password = "Mysqlp@rol2001"; // Пароль
-$dbname = "timetable_shaha"; // Имя базы данных
+$dbname = "timetable1_shaha"; // Имя базы данных
 
 // Создаем подключение
 $conn = new mysqli($servername, $username, $password, $dbname);

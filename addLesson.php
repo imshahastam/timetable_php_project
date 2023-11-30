@@ -1,3 +1,8 @@
+<?php
+require("db_connection.php");
+require_once("functions.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +12,20 @@
 <body>
     <h1>Введите данные:</h1>
     <form action="add_lesson.php" method="POST">
-        <label for="faculty">Название факультета:</label>
-        <input type="text" id="faculty" name="faculty" required><br><br>
+    <label for="faculty_id">Выберите факультет:</label>
+        
+        <select id="faculty_id" name="faculty_id">
+            <?php
+            $faculty_result = get_faculties($conn);
+            
+            if ($faculty_result->num_rows > 0) {
+                echo '<option value="" disabled selected>-Выберите факультет-</option>';
+                while ($faculty_row = $faculty_result->fetch_assoc()) {
+                    echo '<option value="' . $faculty_row["faculty_id"] . '">' . $faculty_row["name"] . '</option>';
+                }
+            }
+            ?>
+        </select><br><br>
 
         <label for="name">Имя предмета:</label>
         <input type="text" id="name" name="name" required><br><br>
@@ -21,9 +38,6 @@
             <option value="Осень">Осень</option>
             <option value="Весна">Весна</option>
         </select><br><br>
-
-        <label for="type">Тип урока:</label>
-        <input type="text" id="type" name="type" required><br><br>
 
         <label for="kredi">Сколько кредитов:</label>
         <input type="number" id="kredi" name="kredi" required><br><br>

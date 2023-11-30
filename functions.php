@@ -1,8 +1,22 @@
 <?php
 
 function get_faculties($conn) {
-    $faculties_sql = "SELECT name FROM faculties";
+    $faculties_sql = "SELECT faculty_id, name FROM faculties";
     $result = $conn->query($faculties_sql);
+
+    return $result;
+}
+
+function get_days($conn) {
+    $days_sql = "SELECT day_id, name FROM days";
+    $result = $conn->query($days_sql);
+
+    return $result;
+}
+
+function get_times($conn) {
+    $times_sql = "SELECT time_id, time FROM times";
+    $result = $conn->query($times_sql);
 
     return $result;
 }

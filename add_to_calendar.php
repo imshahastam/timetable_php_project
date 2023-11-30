@@ -10,12 +10,15 @@
     $day = $_POST["day"];
     $time = $_POST["time"];
 
-    $query = mysqli_query($conn, "UPDATE lessons SET teacher = '$teacher', times = '$time', days = '$day' 
-    WHERE lesson_id = $lesson_id");
+    //$query = mysqli_query($conn, "UPDATE lessons SET teacher = '$teacher', times = '$time', days = '$day' 
+    //WHERE lesson_id = $lesson_id");
+
+    $query = mysqli_query($conn, "INSERT INTO lessons (teacher, times, days)
+    VALUES ('$teacher', '$time', '$day'");
 
     if($query) {
         echo "<script>alert('done')</script>";
     } else {
         echo "Ошибка выполнения запроса: " . mysqli_error($conn);
-    }                   
+    }                 
 ?>
