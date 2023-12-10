@@ -54,28 +54,25 @@ require_once("functions.php");
 
         <label for="day">День недели:</label>
         <select id="day" name="day">
-            <?php
-            $day_result = get_days($conn);
-            
-            if ($day_result->num_rows > 0) {
-                while ($day_row = $day_result->fetch_assoc()) {
-                    echo '<option value="' . $day_row["day_id"] . '">' . $day_row["name"] . '</option>';
-                }
-            }
-            ?>
+            <option value="1">Понедельник</option>
+            <option value="2">Вторник</option>
+            <option value="3">Среда</option>
+            <option value="4">Четверг</option>
+            <option value="5">Пятница</option>
         </select><br><br>
 
         <label for="time">Время:</label>
         <select id="time" name="time">
-            <?php
-            $time_result = get_times($conn);
-            
-            if ($time_result->num_rows > 0) {
-                while ($time_row = $time_result->fetch_assoc()) {
-                    echo '<option value="' . $time_row["time_id"] . '">' . $time_row["time"] . '</option>';
-                }
-            }
-            ?>
+            <option value="1">8:00</option>
+            <option value="2">8:55</option>
+            <option value="3">9:50</option>
+            <option value="4">10:45</option>
+            <option value="5">11:40</option>
+            <option value="6">13:30</option>
+            <option value="7">14:25</option>
+            <option value="8">15:20</option>
+            <option value="9">16:15</option>
+            <option value="10">17:10</option>
         </select><br><br>
         <input type='submit' value="Записать в расписание">
     </form>

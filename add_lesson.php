@@ -2,8 +2,9 @@
 // Подключаем файл с настройками базы данных
 require_once("db_connection.php");
 echo '<pre>';
-        var_dump($_POST);
-        echo '</pre>';
+var_dump($_POST);
+echo '</pre>';
+
 // Получение данных из формы
 $faculty_id = $_POST["faculty_id"];
 $name = $_POST["name"];
