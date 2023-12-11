@@ -1,0 +1,32 @@
+/* th - header
+tr - row 
+td - ячейка */
+
+table {
+    border-spacing: 0;
+    width: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+td:not(:empty):not(.td_time) {
+    background-color:aquamarine;
+    border-radius: 10px;
+}
+
+td {
+    border-radius: 10px;
+}
+
+th {
+    border-radius: 10px;
+    height: 50px;
+    background-color: #04AA6D;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-radius: 10px;
+}

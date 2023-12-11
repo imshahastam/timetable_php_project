@@ -7,6 +7,13 @@ function get_faculties($conn) {
     return $result;
 }
 
+function get_lessons($conn) {
+    $lessons_sql = "SELECT lesson_id, name FROM lessons";
+    $result = $conn->query($lessons_sql);
+
+    return $result;
+}
+
 function get_days($conn) {
     $days_sql = "SELECT day_id, name FROM days";
     $result = $conn->query($days_sql);

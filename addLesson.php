@@ -11,7 +11,7 @@ require_once("functions.php");
 </head>
 <body>
     <h1>Введите данные:</h1>
-    <form action="add_lesson.php" method="POST">
+    <form action="" method="POST">
     <label for="faculty_id">Выберите факультет:</label>
         
         <select id="faculty_id" name="faculty_id">
@@ -50,5 +50,8 @@ require_once("functions.php");
 
         <input type="submit" value="Отправить">
     </form>
+    <?php
+        include 'add_lesson.php';
+    ?>
 </body>
 </html>

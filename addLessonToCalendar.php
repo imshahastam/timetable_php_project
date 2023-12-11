@@ -27,7 +27,7 @@ require_once("functions.php");
         <input type="submit" value="Выбрать факультет">
     </form>
 
-    <form action="add_to_calendar.php" method="POST">
+    <form action="" method="POST">
         <label for='subject'>Выберите предмет:</label>
             <select name='subject' id='subject'>
                 <?php
@@ -75,15 +75,11 @@ require_once("functions.php");
             <option value="10">17:10</option>
         </select><br><br>
         <input type='submit' value="Записать в расписание">
-    </form>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-
-            $()
-        }) 
-    </script>
+    </form> <br>
+    <a href="choose_course.php">Посмотреть в календаре</a> <br>
+    <?php
+        include 'add_to_calendar.php';    
+    ?>
 </body>
 </html>
 
