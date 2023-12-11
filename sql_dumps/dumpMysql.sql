@@ -40,7 +40,7 @@ CREATE TABLE `calendar` (
   CONSTRAINT `calendar_ibfk_4` FOREIGN KEY (`day_id`) REFERENCES `days` (`day_id`) ON DELETE CASCADE,
   CONSTRAINT `calendar_ibfk_5` FOREIGN KEY (`time_id`) REFERENCES `times` (`time_id`) ON DELETE CASCADE,
   CONSTRAINT `calendar_ibfk_6` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`lesson_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,6 +49,7 @@ CREATE TABLE `calendar` (
 
 LOCK TABLES `calendar` WRITE;
 /*!40000 ALTER TABLE `calendar` DISABLE KEYS */;
+INSERT INTO `calendar` VALUES (1,1,1,1,1,1),(2,2,1,1,2,2),(3,3,1,1,4,7),(4,4,1,1,1,1),(5,4,1,1,1,3),(6,5,1,1,3,5),(7,5,1,1,1,3),(8,5,1,1,1,3),(9,5,1,1,4,10),(10,4,1,1,1,1);
 /*!40000 ALTER TABLE `calendar` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +64,7 @@ CREATE TABLE `classrooms` (
   `classroom_id` int NOT NULL AUTO_INCREMENT,
   `number` int NOT NULL,
   PRIMARY KEY (`classroom_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,6 +73,7 @@ CREATE TABLE `classrooms` (
 
 LOCK TABLES `classrooms` WRITE;
 /*!40000 ALTER TABLE `classrooms` DISABLE KEYS */;
+INSERT INTO `classrooms` VALUES (1,119);
 /*!40000 ALTER TABLE `classrooms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +148,7 @@ CREATE TABLE `lessons` (
   KEY `teacher_id` (`teacher_id`),
   CONSTRAINT `lessons_ibfk_1` FOREIGN KEY (`faculty_id`) REFERENCES `faculties` (`faculty_id`) ON DELETE CASCADE,
   CONSTRAINT `lessons_ibfk_3` FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`teacher_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,7 +157,7 @@ CREATE TABLE `lessons` (
 
 LOCK TABLES `lessons` WRITE;
 /*!40000 ALTER TABLE `lessons` DISABLE KEYS */;
-INSERT INTO `lessons` VALUES (1,1,NULL,'Базы Данных','UME-321','Осень',3,1,2,NULL);
+INSERT INTO `lessons` VALUES (1,1,NULL,'Базы Данных','UME-321','Осень',3,1,2,NULL),(2,1,NULL,'Программирование','UME-101','Осень',4,2,2,NULL),(3,1,NULL,'Численный анализ','UME-342','Осень',5,3,2,NULL),(4,2,NULL,'Линейная алгебра','MAT-101','Осень',4,2,2,NULL),(5,3,NULL,'Наследственность','BIO-102','Осень',2,1,1,NULL);
 /*!40000 ALTER TABLE `lessons` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -194,7 +196,7 @@ CREATE TABLE `teachers` (
   `teacher_id` int NOT NULL AUTO_INCREMENT,
   `full_name` text NOT NULL,
   PRIMARY KEY (`teacher_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,6 +205,7 @@ CREATE TABLE `teachers` (
 
 LOCK TABLES `teachers` WRITE;
 /*!40000 ALTER TABLE `teachers` DISABLE KEYS */;
+INSERT INTO `teachers` VALUES (1,'Ella ABILAEVA');
 /*!40000 ALTER TABLE `teachers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,4 +242,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-30  9:35:42
+-- Dump completed on 2023-12-11 13:59:39
